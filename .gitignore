@@ -1,9 +1,12 @@
-# ----- Python (agent-service) -----
+# ----- Python -----
+.venv/
 agent-service/.venv/
 agent-service/__pycache__/
 agent-service/**/*.pyc
 agent-service/**/*.pyo
+.pytest_cache/
 agent-service/.pytest_cache/
+.env
 agent-service/.env
 agent-service/*.egg-info/
 
@@ -11,6 +14,7 @@ agent-service/*.egg-info/
 gateway/node_modules/
 gateway/dist/
 gateway/.env
+gateway/data/
 web/node_modules/
 web/.next/
 web/out/
