@@ -2,7 +2,6 @@
 
 A multi-agent system that helps prepare before meetings and summarize action items afterward,
 using Google ADK for the agent tier and Node/Next.js for the application tier.
-See `DEMO_SCRIPT.md` for the product demo script.
 
 ## Architecture
 
