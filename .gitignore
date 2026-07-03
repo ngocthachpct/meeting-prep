@@ -1,0 +1,32 @@
+# ----- Python (agent-service) -----
+agent-service/.venv/
+agent-service/__pycache__/
+agent-service/**/*.pyc
+agent-service/**/*.pyo
+agent-service/.pytest_cache/
+agent-service/.env
+agent-service/*.egg-info/
+
+# ----- Node.js (gateway & web) -----
+gateway/node_modules/
+gateway/dist/
+gateway/.env
+web/node_modules/
+web/.next/
+web/out/
+web/.env.local
+web/.env
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ----- IDE -----
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

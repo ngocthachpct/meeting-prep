@@ -1,0 +1,117 @@
+[
+  {
+    "id": "prep-001",
+    "mode": "prep",
+    "meeting_id": "evt_001",
+    "description": "Normal weekly sync between 3 team members",
+    "expected": {
+      "has_attendees": true,
+      "has_background": true,
+      "has_talking_points": true,
+      "min_talking_points": 3
+    }
+  },
+  {
+    "id": "prep-002",
+    "mode": "prep",
+    "meeting_id": "evt_002",
+    "description": "One-on-one with external vendor",
+    "expected": {
+      "has_attendees": true,
+      "has_background": true,
+      "has_talking_points": true,
+      "min_talking_points": 2
+    }
+  },
+  {
+    "id": "prep-003",
+    "mode": "prep",
+    "meeting_id": "evt_003",
+    "description": "All-hands company meeting with 20+ attendees",
+    "expected": {
+      "has_attendees": true,
+      "has_background": true,
+      "has_talking_points": true,
+      "min_talking_points": 3
+    }
+  },
+  {
+    "id": "prep-004",
+    "mode": "prep",
+    "meeting_id": "evt_nonexistent",
+    "description": "Edge case: meeting ID does not exist in calendar",
+    "expected": {
+      "has_attendees": false,
+      "notes_missing_data": true
+    }
+  },
+  {
+    "id": "followup-001",
+    "mode": "followup",
+    "transcript": "Sprint retro today. John said frontend is 2 days behind. Maria offered to help with the login page. Decision: push release by 3 days. Alex to update the timeline. Sarah to notify stakeholders by Friday.",
+    "description": "Normal transcript with 2 clear action items",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": true,
+      "min_action_items": 2,
+      "owners_identified": true
+    }
+  },
+  {
+    "id": "followup-002",
+    "mode": "followup",
+    "transcript": "We discussed the budget review. Numbers look good. Need to finalize Q3 projections. That's it.",
+    "description": "Discussion-only transcript with no explicit action items",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": false
+    }
+  },
+  {
+    "id": "followup-003",
+    "mode": "followup",
+    "transcript": "John: I'll finish the API by Monday. Sarah: I'll update the docs by Wednesday. Both agreed to ping the team on Slack when done.",
+    "description": "Short transcript with clear owners and deadlines",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": true,
+      "min_action_items": 2,
+      "owners_identified": true,
+      "deadlines_identified": true
+    }
+  },
+  {
+    "id": "followup-004",
+    "mode": "followup",
+    "transcript": "Meeting about database migration. Lots of discussion about indexing strategies. No firm decisions made. Will reconvene next week.",
+    "description": "Edge case: discussion only, no owners, no decisions",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": false
+    }
+  },
+  {
+    "id": "followup-005",
+    "mode": "followup",
+    "transcript": "",
+    "description": "Edge case: empty transcript",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": false,
+      "graceful_handling": true
+    }
+  },
+  {
+    "id": "followup-006",
+    "mode": "followup",
+    "transcript": "Sprint planning. Bob to implement search feature. Alice to write tests for checkout flow. Charlie to set up CI/CD pipeline. Deadlines: Bob by next sprint, Alice by Friday, Charlie ASAP.",
+    "description": "Multiple action items with varied deadline formats",
+    "expected": {
+      "has_summary": true,
+      "has_action_items": true,
+      "min_action_items": 3,
+      "owners_identified": true,
+      "deadlines_identified": true
+    }
+  }
+]

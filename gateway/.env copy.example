@@ -1,0 +1,8 @@
+# URL of the agent-service (FastAPI + ADK)
+AGENT_SERVICE_URL=http://localhost:8000
+
+# API key used by the web frontend to authenticate against this gateway
+API_KEY=demo-api-key-123
+
+# File path for the action item tracker (persisted across restarts)
+TRACKER_FILE_PATH=./data/tracker.json
