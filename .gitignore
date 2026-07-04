@@ -1,31 +1,55 @@
+# ----- Secrets & environment (never commit) -----
+.env
+.env.*
+!.env.example
+!**/.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*secret*.json
+*service-account*.json
+**/client_secret*.json
+**/credentials.json
+**/credentials.enc
+cloudrun-env.yaml
+**/cloudrun-env.yaml
+
 # ----- Python -----
 .venv/
-agent-service/.venv/
-agent-service/__pycache__/
-agent-service/**/*.pyc
-agent-service/**/*.pyo
+**/__pycache__/
+**/*.pyc
+**/*.pyo
 .pytest_cache/
-agent-service/.pytest_cache/
-.env
-agent-service/.env
-agent-service/*.egg-info/
+**/*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # ----- Node.js (gateway & web) -----
+node_modules/
 gateway/node_modules/
 gateway/dist/
-gateway/.env
 gateway/data/
 web/node_modules/
 web/.next/
 web/out/
-web/.env.local
-web/.env
+web/.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # ----- OS -----
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
+*~
 
 # ----- IDE -----
 .idea/
@@ -34,3 +58,10 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+
+# ----- Logs & temp -----
+*.log
+logs/
+tmp/
+temp/
+.cache/

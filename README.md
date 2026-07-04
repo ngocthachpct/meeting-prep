@@ -159,7 +159,7 @@ echo "NEXT_PUBLIC_API_KEY=demo-api-key-123" >> .env.local
 | ---------- | ------------------------------------------------------------------------- |
 | Frontend   | React 18, Next.js 14 (App Router), Tailwind CSS 3, shadcn/ui              |
 | Backend    | NestJS 10 (gateway), FastAPI + Google ADK (agent-service)                 |
-| AI         | Google Gemini 2.5 Flash, 3-agent `SequentialAgent` pipeline               |
+| AI         | Google Gemini 3.1 Flash-Lite, 3-agent `SequentialAgent` pipeline          |
 | Tools/APIs | Gmail, Calendar, Drive (via MCP / Streamable HTTP)                        |
 | Auth       | API key (Bearer token) — gateway                                          |
 | State      | File-based JSON tracker (gateway), InMemorySessionService (agent-service) |

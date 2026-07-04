@@ -85,6 +85,7 @@ async def test_followup_endpoint(mock_run_async, client):
                 {
                     "mode": "followup",
                     "summary": "Discussed sprint",
+                    "draft_created": True,
                     "action_items": [{"owner": "Alice", "task": "Finish API", "deadline": "Friday"}],
                 }
             )
@@ -144,3 +145,41 @@ async def test_prep_missing_fields(client):
 async def test_followup_missing_fields(client):
     resp = await client.post("/meetings/followup", json={})
     assert resp.status_code == 422
+
+
+@pytest.mark.asyncio
+@patch("main._resolve_draft_to", return_value="me@example.com")
+@patch("main._create_gmail_draft", return_value=True)
+@patch("main.runner.run_async")
+async def test_followup_draft_fallback(mock_run_async, mock_create_draft, _mock_draft_to, client):
+    """When the agent skips gmail_drafts_create, main.py creates the draft."""
+    fake_event = MagicMock()
+    fake_event.is_final_response.return_value = True
+    fake_event.content.parts = [
+        MagicMock(
+            text=json.dumps(
+                {
+                    "mode": "followup",
+                    "summary": "Discussed sprint",
+                    "draft_created": False,
+                    "action_items": [
+                        {"owner": "Alice", "task": "Finish API", "deadline": "Friday"}
+                    ],
+                }
+            )
+        )
+    ]
+    mock_run_async.return_value.__aiter__.return_value = [fake_event]
+
+    resp = await client.post(
+        "/meetings/followup",
+        json={"user_id": "u1", "transcript": "Alice will finish the API by Friday"},
+    )
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["draft_created"] is True
+    mock_create_draft.assert_called_once()
+    args = mock_create_draft.call_args[0]
+    assert args[0] == "me@example.com"
+    assert "Meeting follow-up" in args[1]
+    assert "Alice" in args[2]
